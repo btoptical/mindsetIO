@@ -65,34 +65,34 @@ def parse_site(url):
 def find_changes(url):
     print('no')
 
-out = parse_site('http://blog.miahomeowners.com')
-outb = parse_site('http://blog.miahomeowners.com')
-out2 = parse_site('http://blog.miahomeowners.com/p/maintenance.html')
+#out = parse_site('http://blog.miahomeowners.com')
+#outb = parse_site('http://blog.miahomeowners.com')
+#out2 = parse_site('http://blog.miahomeowners.com/p/maintenance.html')
 #
-
-#Check to see if the Internet is broken
-url1= 'http://blog.miahomeowners.com'
-url2 = 'http://blog.miahomeowners.com/p/maintenance.html'
-
-if is_internet_reachable():
-    print('we has da internets')
-    if get_site_status(url1):
-        if check_last_modified(url1,60):
-            data1 = parse_site(url1)
-            find_changes(url1)
+if __name__ == "__main__":
+#   Check to see if the Internet is broken
+    url1= 'http://blog.miahomeowners.com'
+    url2 = 'http://blog.miahomeowners.com/p/maintenance.html'
+    
+    if is_internet_reachable():
+        print('we has da internets')
+        if get_site_status(url1):
+            if check_last_modified(url1,60):
+                data1 = parse_site(url1)
+                find_changes(url1)
+            else:
+                print('no modifications')
         else:
-            print('no modifications')
-    else:
-        print('page not available')
-        
-    if get_site_status(url2):
-        if check_last_modified(url2, 60):
-             data2 = parse_site(url2)
-             find_changes(url2)
+            print('page not available')
+            
+        if get_site_status(url2):
+            if check_last_modified(url2, 60):
+                 data2 = parse_site(url2)
+                 find_changes(url2)
+            else:
+                print('no modifications')
         else:
-            print('no modifications')
-    else:
-        print('page not available')
+            print('page not available')
             
 
 
